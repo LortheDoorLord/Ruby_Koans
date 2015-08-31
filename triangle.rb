@@ -14,7 +14,13 @@
 #   about_triangle_project_2.rb
 #
 def triangle(a, b, c)
-  # WRITE THIS CODE
+  triangle_array = [a, b, c]
+  triangle_array.any? {|x| raise TriangleError.new if x<=0}
+  raise TriangleError.new if (a + b + c) - triangle_array.max <=triangle_array.max
+  
+  return :equilateral if (a == b && a == c && b == c)
+  return :isosceles if (a == b || a == c || b == c)
+  return :scalene  
 end
 
 # Error class used in part 2.  No need to change this code.
